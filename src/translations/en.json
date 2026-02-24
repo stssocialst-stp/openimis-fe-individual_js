@@ -83,6 +83,11 @@
       },
       "mutationLabel": "Undo delete Individual {id}"
     },
+    "create": {
+      "pageTitle": "New Individual",
+      "mutationLabel": "Create Individual",
+      "tooltip": "Create Individual"
+    },
     "update": {
       "label": "Update Individual",
       "mutationLabel":"Update Individual {id}"

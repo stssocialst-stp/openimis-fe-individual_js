@@ -162,7 +162,7 @@ export function fetchIndividuals(mm, params) {
 
 // fetch the individual districts on type
 export function fetchIndividualDistricts() {
-  
+
   const payload = formatPageQuery('individual', ['uniqueFields: ["district"]'], ['district']);
   return graphql(payload, ACTION_TYPE.GET_INDIVIDUAL_DISTRICTS);
 }
@@ -171,7 +171,7 @@ export function fetchIndividualDistricts() {
 export function fetchIndividualSubDistricts() {
   const payload = formatPageQuery('individual', ['uniqueFields: ["sub_district"]'], ['subDistrict']);
   return graphql
-  (payload, ACTION_TYPE.GET_INDIVIDUAL_SUB_DISTRICTS);
+    (payload, ACTION_TYPE.GET_INDIVIDUAL_SUB_DISTRICTS);
 }
 
 export function createUpdateIndividualPhoto(photo, clientMutationLabel) {
@@ -343,6 +343,21 @@ function formatConfirmEnrollmentGQL(params) {
     ${params?.customFilters ? `customFilters: ${params.customFilters}` : ''}
     ${params?.benefitPlanId ? `benefitPlanId: ${params.benefitPlanId}` : ''}
     ${params?.status ? `status: ${params.status}` : ''}`;
+}
+
+export function createIndividual(individual, clientMutationLabel) {
+  const mutation = formatMutation('createIndividual', formatIndividualGQL(individual), clientMutationLabel);
+  const requestedDateTime = new Date();
+  return graphql(
+    mutation.payload,
+    [REQUEST(ACTION_TYPE.MUTATION), SUCCESS(ACTION_TYPE.CREATE_INDIVIDUAL), ERROR(ACTION_TYPE.MUTATION)],
+    {
+      actionType: ACTION_TYPE.CREATE_INDIVIDUAL,
+      clientMutationId: mutation.clientMutationId,
+      clientMutationLabel,
+      requestedDateTime,
+    },
+  );
 }
 
 export function updateIndividual(individual, clientMutationLabel) {

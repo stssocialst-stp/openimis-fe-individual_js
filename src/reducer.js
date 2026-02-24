@@ -29,6 +29,7 @@ export const ACTION_TYPE = {
   UNDO_DELETE_INDIVIDUAL: 'INDIVIDUAL_UNDO_DELETE_INDIVIDUAL',
   DELETE_GROUP_INDIVIDUAL: 'GROUP_INDIVIDUAL_DELETE_GROUP_INDIVIDUAL',
   DELETE_GROUP: 'GROUP_DELETE_GROUP',
+  CREATE_INDIVIDUAL: 'INDIVIDUAL_CREATE_INDIVIDUAL',
   UPDATE_INDIVIDUAL: 'INDIVIDUAL_UPDATE_INDIVIDUAL',
   CREATE_INDIVIDUAL_PHOTO: "INDIVIDUAL_CREATE_INDIVIDUAL_PHOTO",
   UPDATE_INDIVIDUAL_PHOTO: "INDIVIDUAL_UPDATE_INDIVIDUAL_PHOTO",
@@ -292,7 +293,7 @@ function reducer(
             console.error('Error parsing jsonExt:', error);
             jsonExtParsed = null; // Set to null or handle the error as needed
           }
-          
+
           return {
             ...individual,
             id: decodeId(individual.id),
@@ -386,8 +387,8 @@ function reducer(
             ...group,
             id: decodeId(group.id),
             jsonExt: jsonExtParsed, // Replace stringified JSON with parsed object
-            head: { 
-              ...group.head, 
+            head: {
+              ...group.head,
               jsonExt: headJsonExtParsed // Replace stringified JSON in head with parsed object
             }
           };
@@ -795,6 +796,8 @@ function reducer(
       return dispatchMutationReq(state, action);
     case ERROR(ACTION_TYPE.MUTATION):
       return dispatchMutationErr(state, action);
+    case SUCCESS(ACTION_TYPE.CREATE_INDIVIDUAL):
+      return dispatchMutationResp(state, 'createIndividual', action);
     case SUCCESS(ACTION_TYPE.DELETE_INDIVIDUAL):
       return dispatchMutationResp(state, 'deleteIndividual', action);
     case SUCCESS(ACTION_TYPE.UNDO_DELETE_INDIVIDUAL):

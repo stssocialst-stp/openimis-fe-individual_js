@@ -108,8 +108,8 @@ function IndividualSearcher({
 
   useEffect(() => {
     const canFetchBenefitPlanSchemaFields = !fetchedFieldsFromBfSchema
-        && !fetchingFieldsFromBfSchema
-        && rights.includes(RIGHT_SCHEMA_SEARCH);
+      && !fetchingFieldsFromBfSchema
+      && rights.includes(RIGHT_SCHEMA_SEARCH);
 
     if (canFetchBenefitPlanSchemaFields) {
       const fetchBenefitPlanSchemaFields = modulesManager.getRef(FETCH_BENEFIT_PLAN_SCHEMA_FIELDS_REF);
@@ -144,8 +144,8 @@ function IndividualSearcher({
   );
 
   const onDoubleClick = (individual, newTab = false) => rights.includes(RIGHT_INDIVIDUAL_UPDATE)
-  && !deletedIndividualUuids.includes(individual.id)
-  && historyPush(modulesManager, history, 'individual.route.individual', [individual?.id], newTab);
+    && !deletedIndividualUuids.includes(individual.id)
+    && historyPush(modulesManager, history, 'individual.route.individual', [individual?.id], newTab);
 
   const onDelete = (individual) => setIndividualToDelete(individual);
   const onUndo = (individual) => setIndividualToUndo(individual);
@@ -216,8 +216,8 @@ function IndividualSearcher({
 
   const itemFormatters = () => {
     const formatters = [
-      (individual) => individual.jsonExt.nome,
-      (individual) => individual.jsonExt.vulgo,
+      (individual) => individual.jsonExt.nome || individual.firstName,
+      (individual) => individual.jsonExt.vulgo || individual.lastName,
       (individual) => individual.jsonExt.num_doc_id,
       (individual) => (individual.dob ? formatDateFromISO(modulesManager, intl, individual.dob) : EMPTY_STRING),
       (individual) => individual.jsonExt.distrito,
@@ -278,7 +278,7 @@ function IndividualSearcher({
   ];
 
   const isRowDisabled = (_, individual) => deletedIndividualUuids.includes(individual.id)
-      || undoIndividualUuids.includes(individual.id);
+    || undoIndividualUuids.includes(individual.id);
 
   const [failedExport, setFailedExport] = useState(false);
 

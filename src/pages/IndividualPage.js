@@ -16,9 +16,9 @@ import _ from 'lodash';
 import { withTheme, withStyles } from '@material-ui/core/styles';
 import DeleteIcon from '@material-ui/icons/Delete';
 import UndoIcon from '@material-ui/icons/Undo';
-import { RIGHT_INDIVIDUAL_UPDATE } from '../constants';
+import { RIGHT_INDIVIDUAL_CREATE, RIGHT_INDIVIDUAL_UPDATE } from '../constants';
 import {
-  fetchIndividual, deleteIndividual, updateIndividual, undoDeleteIndividual,
+  fetchIndividual, deleteIndividual, createIndividual, updateIndividual, undoDeleteIndividual,
 } from '../actions';
 import IndividualHeadPanel from '../components/IndividualHeadPanel';
 import IndividualTabPanel from '../components/IndividualTabPanel';
@@ -38,6 +38,7 @@ function IndividualPage({
   individual,
   fetchIndividual,
   deleteIndividual,
+  createIndividual,
   updateIndividual,
   coreConfirm,
   clearConfirm,
@@ -47,6 +48,7 @@ function IndividualPage({
   journalize,
   undoDeleteIndividual,
 }) {
+  const isCreateMode = !individualUuid;
   const [editedIndividual, setEditedIndividual] = useState({});
   const [confirmedAction, setConfirmedAction] = useState(() => null);
   const prevSubmittingMutationRef = useRef();
@@ -56,6 +58,12 @@ function IndividualPage({
       fetchIndividual(modulesManager, [`id: "${individualUuid}"`]);
     }
   }, [individualUuid]);
+
+  useEffect(() => {
+    if (!individualUuid) {
+      setEditedIndividual({});
+    }
+  }, []);
 
   useEffect(() => {
     if (confirmed && confirmedAction) confirmedAction();
@@ -72,6 +80,9 @@ function IndividualPage({
       }
       if (mutation?.actionType === ACTION_TYPE.UNDO_DELETE_INDIVIDUAL) {
         window.location.reload();
+      }
+      if (mutation?.actionType === ACTION_TYPE.CREATE_INDIVIDUAL) {
+        back();
       }
     }
   }, [submittingMutation]);
@@ -102,6 +113,7 @@ function IndividualPage({
   };
 
   const doesIndividualChange = () => {
+    if (isCreateMode) return true;
     if (_.isEqual(individual, editedIndividual)) {
       return false;
     }
@@ -111,12 +123,19 @@ function IndividualPage({
   const canSave = () => !isMandatoryFieldsEmpty() && doesIndividualChange();
 
   const handleSave = () => {
-    updateIndividual(
-      editedIndividual,
-      formatMessageWithValues(intl, 'individual', 'individual.update.mutationLabel', {
-        id: individual?.id,
-      }),
-    );
+    if (isCreateMode) {
+      createIndividual(
+        editedIndividual,
+        formatMessage(intl, 'individual', 'individual.create.mutationLabel'),
+      );
+    } else {
+      updateIndividual(
+        editedIndividual,
+        formatMessageWithValues(intl, 'individual', 'individual.update.mutationLabel', {
+          id: individual?.id,
+        }),
+      );
+    }
   };
 
   const deleteIndividualCallback = () => deleteIndividual(
@@ -155,7 +174,7 @@ function IndividualPage({
     );
   };
 
-  const actions = [
+  const actions = isCreateMode ? [] : [
     {
       doIt: openDeleteIndividualConfirmDialog,
       icon: <DeleteIcon />,
@@ -170,14 +189,21 @@ function IndividualPage({
     },
   ];
 
+  const hasAccess = isCreateMode
+    ? rights.includes(RIGHT_INDIVIDUAL_CREATE)
+    : rights.includes(RIGHT_INDIVIDUAL_UPDATE);
+
   return (
-    rights.includes(RIGHT_INDIVIDUAL_UPDATE) && (
+    hasAccess && (
       <div className={classes.page}>
-        <Helmet title={formatMessageWithValues(intl, 'individual', 'pageTitle', titleParams(individual))} />
+        <Helmet title={isCreateMode
+          ? formatMessage(intl, 'individual', 'individual.create.pageTitle')
+          : formatMessageWithValues(intl, 'individual', 'pageTitle', titleParams(individual))}
+        />
         <Form
           module="individual"
-          title="pageTitle"
-          titleParams={titleParams(individual)}
+          title={isCreateMode ? 'individual.create.pageTitle' : 'pageTitle'}
+          titleParams={isCreateMode ? {} : titleParams(individual)}
           openDirty
           individual={editedIndividual}
           edited={editedIndividual}
@@ -191,7 +217,7 @@ function IndividualPage({
           rights={rights}
           actions={actions}
           setConfirmedAction={setConfirmedAction}
-          saveTooltip={formatMessage(intl, 'individual', `saveButton.tooltip.${canSave ? 'enabled' : 'disabled'}`)}
+          saveTooltip={formatMessage(intl, 'individual', `saveButton.tooltip.${canSave() ? 'enabled' : 'disabled'}`)}
         />
       </div>
     )
@@ -213,6 +239,7 @@ const mapStateToProps = (state, props) => ({
 const mapDispatchToProps = (dispatch) => bindActionCreators({
   fetchIndividual,
   deleteIndividual,
+  createIndividual,
   updateIndividual,
   undoDeleteIndividual,
   coreConfirm,
