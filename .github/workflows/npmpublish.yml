@@ -24,12 +24,12 @@ on:
         description: 'Access level for npm package'
         required: false
         default: 'public'
-      tab:
+      tag:
         required: true
 
 jobs:
   call-npm-publish-workflow:
-    uses: openimis/openimis-fe_js/.github/workflows/module-npmpublish.yml@develop
+    uses: stssocialst-stp/openimis-fe_js/.github/workflows/module-npmpublish.yml@stp-changes
     with:
       registry_url: 'https://registry.npmjs.org/'
       node_version: ${{ github.event.inputs.node_version }}
@@ -39,7 +39,7 @@ jobs:
     secrets:
       NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
   call-gpr-publish-workflow:
-    uses: openimis/openimis-fe_js/.github/workflows/module-npmpublish.yml@develop
+    uses: stssocialst-stp/openimis-fe_js/.github/workflows/module-npmpublish.yml@stp-changes
     with:
       registry_url: 'https://npm.pkg.github.com/'
       node_version: ${{ github.event.inputs.node_version }}
