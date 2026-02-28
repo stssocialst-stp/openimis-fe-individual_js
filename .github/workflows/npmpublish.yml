@@ -19,7 +19,7 @@ on:
       scope:
         description: 'Scope for npm package'
         required: false
-        default: 'openimis'
+        default: 'stssocialst-stp'
       access:
         description: 'Access level for npm package'
         required: false
@@ -28,16 +28,16 @@ on:
         required: true
 
 jobs:
-  call-npm-publish-workflow:
-    uses: stssocialst-stp/openimis-fe_js/.github/workflows/module-npmpublish.yml@stp-changes
-    with:
-      registry_url: 'https://registry.npmjs.org/'
-      node_version: ${{ github.event.inputs.node_version }}
-      access: ${{ github.event.inputs.access }}
-      scope: ${{ github.event.inputs.scope }}
-      tag:  ${{ github.event.inputs.tag }}
-    secrets:
-      NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+  #call-npm-publish-workflow:
+  #  uses: stssocialst-stp/openimis-fe_js/.github/workflows/module-npmpublish.yml@stp-changes
+  #  with:
+  #   registry_url: 'https://registry.npmjs.org/'
+  #   node_version: ${{ github.event.inputs.node_version }}
+  #   access: ${{ github.event.inputs.access }}
+  #   scope: ${{ github.event.inputs.scope }}
+  #   tag:  ${{ github.event.inputs.tag }}
+  #  secrets:
+  #   NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
   call-gpr-publish-workflow:
     uses: stssocialst-stp/openimis-fe_js/.github/workflows/module-npmpublish.yml@stp-changes
     with:
