@@ -1,4 +1,4 @@
-name: Publish package to GitHub Packages
+name: Publish package to NPM Registry
 on:
   release:
     types: [published]  
@@ -20,22 +20,3 @@ jobs:
       - run: npm publish --provenance --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-
-  # build_github_registry:
-  #   runs-on: ubuntu-latest
-  #   permissions:
-  #     contents: read
-  #     packages: write
-  #   steps:
-  #     - uses: actions/checkout@v5
-  #     # Setup .npmrc file to publish to GitHub Packages
-  #     - uses: actions/setup-node@v4
-  #       with:
-  #         node-version: '20.x'
-  #         registry-url: 'https://npm.pkg.github.com'
-  #         # Defaults to the user or organization that owns the workflow file
-  #         scope: '@stssocialst-stp'
-  #     - run: npm ci
-  #     - run: npm publish
-  #       env:
-  #         NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
