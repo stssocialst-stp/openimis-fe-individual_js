@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "license": "AGPL-3.0-only",
   "description": "openIMIS Frontend Individual module",
-  "repository": "openimis/openimis-fe-individual_js",
+  "repository": "stssocialst-stp/openimis-fe-individual_js",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
   "engines": {
