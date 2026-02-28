@@ -1,50 +1,24 @@
-# This workflow will run tests using node and then publish a package to GitHub Packages when a release is created
-# For more information see: https://help.github.com/actions/language-and-framework-guides/publishing-nodejs-packages
-
-name: Publish Node.js Package
-
+name: Publish package to GitHub Packages
 on:
   release:
-    types: [published]
+    types: [published]  
   workflow_dispatch:
-    inputs:
-      node_version:
-        description: 'Node version to use'
-        required: true
-        default: '20'
-      registry_url:
-        description: 'NPM registry URL'
-        required: true
-        default: 'https://registry.npmjs.org/'
-      scope:
-        description: 'Scope for npm package'
-        required: false
-        default: 'stssocialst-stp'
-      access:
-        description: 'Access level for npm package'
-        required: false
-        default: 'public'
-      tag:
-        required: true
-
 jobs:
-  #call-npm-publish-workflow:
-  #  uses: stssocialst-stp/openimis-fe_js/.github/workflows/module-npmpublish.yml@stp-changes
-  #  with:
-  #   registry_url: 'https://registry.npmjs.org/'
-  #   node_version: ${{ github.event.inputs.node_version }}
-  #   access: ${{ github.event.inputs.access }}
-  #   scope: ${{ github.event.inputs.scope }}
-  #   tag:  ${{ github.event.inputs.tag }}
-  #  secrets:
-  #   NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-  call-gpr-publish-workflow:
-    uses: stssocialst-stp/openimis-fe_js/.github/workflows/module-npmpublish.yml@stp-changes
-    with:
-      registry_url: 'https://npm.pkg.github.com/'
-      node_version: ${{ github.event.inputs.node_version }}
-      access: ${{ github.event.inputs.access }}
-      scope: ${{ github.event.inputs.scope }}
-      tag:  ${{ github.event.inputs.tag }}
-    secrets:
-      NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - uses: actions/checkout@v5
+      # Setup .npmrc file to publish to GitHub Packages
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+          registry-url: 'https://npm.pkg.github.com'
+          # Defaults to the user or organization that owns the workflow file
+          scope: '@stssocialst-stp'
+      - run: npm ci
+      - run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
