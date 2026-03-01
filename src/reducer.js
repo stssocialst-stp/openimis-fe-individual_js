@@ -10,7 +10,7 @@ import {
   parseData,
   pageInfo,
   decodeId,
-} from '@openimis/fe-core';
+} from '@stssocialst-stp/fe-core';
 import _ from 'lodash';
 import {
   REQUEST, SUCCESS, ERROR, CLEAR, SET,

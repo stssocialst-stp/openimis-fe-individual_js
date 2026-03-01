@@ -10,7 +10,7 @@ import {
   formatMessage,
   TextInput,
   PublishedComponent,
-} from '@openimis/fe-core';
+} from '@stssocialst-stp/fe-core';
 import _debounce from 'lodash/debounce';
 import { injectIntl } from 'react-intl';
 import { INDIVIDUAL_MODULE_NAME } from '../constants';

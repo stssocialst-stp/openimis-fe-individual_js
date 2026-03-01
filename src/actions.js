@@ -8,7 +8,7 @@ import {
   formatGQLString,
   graphqlWithVariables,
   prepareMutation,
-} from '@openimis/fe-core';
+} from '@stssocialst-stp/fe-core';
 import { ACTION_TYPE } from './reducer';
 import {
   CLEAR, ERROR, REQUEST, SET, SUCCESS,

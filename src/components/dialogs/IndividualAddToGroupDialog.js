@@ -5,7 +5,7 @@ import { withTheme, withStyles } from '@material-ui/core/styles';
 import {
   Button, Dialog, DialogActions, DialogContent, DialogTitle,
 } from '@material-ui/core';
-import { useTranslations, useModulesManager } from '@openimis/fe-core';
+import { useTranslations, useModulesManager } from '@stssocialst-stp/fe-core';
 import IndividualAddToGroupPicker from '../../pickers/IndividualAddToGroupPicker';
 
 const styles = (theme) => ({

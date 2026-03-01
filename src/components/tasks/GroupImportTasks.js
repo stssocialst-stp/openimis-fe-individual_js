@@ -11,7 +11,7 @@ import {
   decodeId,
   formatMessage,
   formatMessageWithValues,
-} from '@openimis/fe-core';
+} from '@stssocialst-stp/fe-core';
 import ClearIcon from '@material-ui/icons/Clear';
 import CheckIcon from '@material-ui/icons/Check';
 

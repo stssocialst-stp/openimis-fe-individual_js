@@ -8,7 +8,7 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import {
   useModulesManager,
   useTranslations,
-} from '@openimis/fe-core';
+} from '@stssocialst-stp/fe-core';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { INDIVIDUAL_MODULE_NAME } from '../../constants';

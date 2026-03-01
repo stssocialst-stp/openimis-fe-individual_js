@@ -12,7 +12,7 @@ import {
   PublishedComponent,
   formatMessage,
   withModulesManager,
-} from '@openimis/fe-core';
+} from '@stssocialst-stp/fe-core';
 import AdvancedCriteriaForm from './dialogs/AdvancedCriteriaForm';
 import { CLEARED_STATE_FILTER } from '../constants';
 

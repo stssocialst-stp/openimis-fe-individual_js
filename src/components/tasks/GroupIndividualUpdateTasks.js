@@ -1,5 +1,5 @@
 import React from 'react';
-import { FormattedMessage } from '@openimis/fe-core';
+import { FormattedMessage } from '@stssocialst-stp/fe-core';
 
 const GroupIndividualUpdateTaskTableHeaders = () => [
   <FormattedMessage module="individual" id="groupIndividual.individual.groupId" />,

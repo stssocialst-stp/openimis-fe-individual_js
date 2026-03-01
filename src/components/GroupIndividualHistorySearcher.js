@@ -8,7 +8,7 @@ import {
   Searcher,
   withHistory,
   withModulesManager,
-} from '@openimis/fe-core';
+} from '@stssocialst-stp/fe-core';
 import { DEFAULT_PAGE_SIZE, EMPTY_STRING, ROWS_PER_PAGE_OPTIONS } from '../constants';
 import GroupIndividualHistoryFilter from './GroupIndividualHistoryFilter';
 import { fetchGroupIndividualHistory } from '../actions';

@@ -3,7 +3,7 @@ import { Tab } from '@material-ui/core';
 import {
   formatMessage, PublishedComponent,
   useModulesManager,
-} from '@openimis/fe-core';
+} from '@stssocialst-stp/fe-core';
 import { GROUP_TASK_TAB_VALUE, GROUP_LABEL, TASK_CONTRIBUTION_KEY } from '../constants';
 
 function GroupTaskTabLabel({

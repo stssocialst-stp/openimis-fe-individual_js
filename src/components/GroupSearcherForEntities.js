@@ -11,7 +11,7 @@ import {
   coreConfirm,
   clearConfirm,
   journalize,
-} from '@openimis/fe-core';
+} from '@stssocialst-stp/fe-core';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import {

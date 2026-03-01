@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import {
   useModulesManager, useTranslations, Autocomplete,
-} from '@openimis/fe-core';
+} from '@stssocialst-stp/fe-core';
 import { fetchGroups } from '../actions';
 
 function GroupPicker(props) {

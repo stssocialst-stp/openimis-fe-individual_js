@@ -1,4 +1,4 @@
-import { baseApiUrl } from '@openimis/fe-core';
+import { baseApiUrl } from '@stssocialst-stp/fe-core';
 
 export function isBase64Encoded(str) {
   // Base64 encoded strings can only contain characters from [A-Za-z0-9+/=]

@@ -7,7 +7,7 @@ import {
   Searcher,
   withHistory,
   withModulesManager,
-} from '@openimis/fe-core';
+} from '@stssocialst-stp/fe-core';
 import { DEFAULT_PAGE_SIZE, EMPTY_STRING, ROWS_PER_PAGE_OPTIONS } from '../constants';
 import GroupHistoryFilter from './GroupHistoryFilter';
 import { fetchGroupHistory } from '../actions';

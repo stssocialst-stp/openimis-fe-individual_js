@@ -1,7 +1,7 @@
 import React from 'react';
 import {
   Helmet, withModulesManager, withHistory, withTooltip, formatMessage, historyPush,
-} from '@openimis/fe-core';
+} from '@stssocialst-stp/fe-core';
 import { injectIntl } from 'react-intl';
 import { withTheme, withStyles } from '@material-ui/core/styles';
 import { connect } from 'react-redux';

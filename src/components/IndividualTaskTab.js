@@ -3,7 +3,7 @@ import { Tab } from '@material-ui/core';
 import {
   formatMessage, PublishedComponent,
   useModulesManager,
-} from '@openimis/fe-core';
+} from '@stssocialst-stp/fe-core';
 import { INDIVIDUAL_LABEL, INDIVIDUAL_TASK_TAB_VALUE, TASK_CONTRIBUTION_KEY } from '../constants';
 
 function IndividalTaskTabLabel({

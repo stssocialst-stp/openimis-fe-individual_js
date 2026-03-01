@@ -2,7 +2,7 @@
 /* eslint-disable camelcase */
 /* eslint-disable import/prefer-default-export */
 import flatten from 'flat';
-import { FormattedMessage } from '@openimis/fe-core';
+import { FormattedMessage } from '@stssocialst-stp/fe-core';
 import React from 'react';
 import { Person, People } from '@material-ui/icons';
 import MenuIcon from '@material-ui/icons/Menu';

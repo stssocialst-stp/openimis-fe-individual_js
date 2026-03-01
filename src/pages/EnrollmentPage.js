@@ -12,7 +12,7 @@ import {
   coreConfirm,
   clearConfirm,
   journalize,
-} from '@openimis/fe-core';
+} from '@stssocialst-stp/fe-core';
 import EnrollmentHeadPanel from '../components/EnrollmentHeadPanel';
 import { DEFAULT_BENEFICIARY_STATUS } from '../constants';
 

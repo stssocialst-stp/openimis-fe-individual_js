@@ -14,7 +14,7 @@ import {
   downloadExport,
   CLEARED_STATE_FILTER,
   decodeId,
-} from '@openimis/fe-core';
+} from '@stssocialst-stp/fe-core';
 import { bindActionCreators } from 'redux';
 import { connect, useDispatch } from 'react-redux';
 import {

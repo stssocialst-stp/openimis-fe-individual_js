@@ -6,7 +6,7 @@ import { withTheme, withStyles } from '@material-ui/core/styles';
 import {
   Button, Dialog, DialogActions, DialogContent, DialogTitle,
 } from '@material-ui/core';
-import { useTranslations, useModulesManager, useHistory } from '@openimis/fe-core';
+import { useTranslations, useModulesManager, useHistory } from '@stssocialst-stp/fe-core';
 import GroupPicker from '../pickers/GroupPicker';
 import { setNewGroupIndividual } from '../actions';
 

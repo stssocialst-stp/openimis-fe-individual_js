@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-props-no-spreading */
 
 import React from 'react';
-import { Contributions } from '@openimis/fe-core';
+import { Contributions } from '@stssocialst-stp/fe-core';
 import { BENEFIT_PLAN_TABS_LABEL_CONTRIBUTION_KEY, BENEFIT_PLAN_TABS_PANEL_CONTRIBUTION_KEY } from '../constants';
 
 function BenefitPlansListTabLabel(props) {

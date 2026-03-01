@@ -7,7 +7,7 @@ import {
   combine,
   useTranslations,
   useDebounceCb,
-} from "@openimis/fe-core";
+} from "@stssocialst-stp/fe-core";
 import _ from "lodash";
 
 const styles = () => ({

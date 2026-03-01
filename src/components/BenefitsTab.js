@@ -2,7 +2,7 @@ import React from 'react';
 import { Tab } from '@material-ui/core';
 import {
   formatMessage, PublishedComponent,
-} from '@openimis/fe-core';
+} from '@stssocialst-stp/fe-core';
 import { BENEFITS_TAB_VALUE, BENEFITS_CONTRIBUTION_KEY } from '../constants';
 
 function BenefitsTabLabel({

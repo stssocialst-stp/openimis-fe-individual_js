@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { injectIntl } from 'react-intl';
 import { withTheme, withStyles } from '@material-ui/core/styles';
 import { Avatar, Grid, IconButton, Button, Modal } from '@material-ui/core';
-import { toISODate, useModulesManager, useTranslations, formatMessageWithValues, FormattedMessage } from '@openimis/fe-core';
+import { toISODate, useModulesManager, useTranslations, formatMessageWithValues, FormattedMessage } from '@stssocialst-stp/fe-core';
 import moment from 'moment';
 import { createUpdateIndividualPhoto } from '../actions';
 

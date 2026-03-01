@@ -5,7 +5,7 @@ import {
   Autocomplete, useModulesManager,
   useTranslations, useGraphqlQuery,
   decodeId,
-} from '@openimis/fe-core';
+} from '@stssocialst-stp/fe-core';
 import { INDIVIDUALS_QUANTITY_LIMIT } from '../constants';
 
 function IndividualPicker(props) {
