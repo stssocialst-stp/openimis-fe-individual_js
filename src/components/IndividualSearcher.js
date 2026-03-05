@@ -216,12 +216,12 @@ function IndividualSearcher({
 
   const itemFormatters = () => {
     const formatters = [
-      (individual) => individual.jsonExt.nome || individual.firstName,
-      (individual) => individual.jsonExt.vulgo || individual.lastName,
-      (individual) => individual.jsonExt.num_doc_id,
+      (individual) => `${individual.firstName ?? ''} ${individual.lastName ?? ''}`.trim(),
+      (individual) => individual.vulgo,
+      (individual) => individual.numDocId,
       (individual) => (individual.dob ? formatDateFromISO(modulesManager, intl, individual.dob) : EMPTY_STRING),
-      (individual) => individual.jsonExt.distrito,
-      (individual) => individual.jsonExt.subdistrito,
+      (individual) => individual.distrito,
+      (individual) => individual.subdistrito,
     ];
 
     // const locations = Array.from({ length: LOC_LEVELS }, (_, i) => (group) => (
@@ -269,12 +269,12 @@ function IndividualSearcher({
   const rowIdentifier = (individual) => individual.id;
 
   const sorts = () => [
-    ['jsonExt_Nome', true],
-    ['jsonExt_Vulgo', true],
-    ['jsonExt_NumDocId', true],
-    ['jsonExt_Distrito', true],
-    ['jsonExt_Subdistrito', true],
+    ['firstName', true],
+    ['vulgo', true],
+    ['numDocId', true],
     ['dob', true],
+    ['distrito', true],
+    ['subdistrito', true],
   ];
 
   const isRowDisabled = (_, individual) => deletedIndividualUuids.includes(individual.id)

@@ -75,7 +75,7 @@ class IndividualHeadPanel extends FormPanel {
               module="individual"
               label="individual.nickname"
               onChange={(v) => this.updateAttribute('nickname', v)}
-              value={parseJsonExt?.vulgo}
+              value={individual?.vulgo}
             />
           </Grid>
           <Grid item xs={2} className={classes.item}>
@@ -83,7 +83,7 @@ class IndividualHeadPanel extends FormPanel {
               module="individual"
               label="individual.idNumber"
               onChange={(v) => this.updateAttribute('idNumber', v)}
-              value={parseJsonExt?.num_doc_id}
+              value={individual?.numDocId}
             />
           </Grid>
           <Grid item xs={2} className={classes.item}>
@@ -92,7 +92,7 @@ class IndividualHeadPanel extends FormPanel {
               label="individual.sex"
               required
               onChange={(v) => this.updateAttribute('sex', v)}
-              value={parseJsonExt?.sexo}
+              value={individual?.sexo}
             />
           </Grid>
           <Grid item xs={3} className={classes.item}>
@@ -111,7 +111,7 @@ class IndividualHeadPanel extends FormPanel {
               module="individual"
               label="individual.district"
               onChange={(v) => this.updateAttribute('district', v)}
-              value={parseJsonExt?.distrito}
+              value={individual?.distrito}
             />
           </Grid>
           <Grid item xs={2} className={classes.item}>
@@ -119,7 +119,7 @@ class IndividualHeadPanel extends FormPanel {
               module="individual"
               label="individual.subDistrict"
               onChange={(v) => this.updateAttribute('subDistrict', v)}
-              value={parseJsonExt?.subDistrito}
+              value={individual?.subdistrito}
             />
           </Grid>
           <Grid item xs={2} className={classes.item}>

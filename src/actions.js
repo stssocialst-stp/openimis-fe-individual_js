@@ -62,6 +62,14 @@ const INDIVIDUAL_FULL_PROJECTION = (mm, withGroupIndividuals = false) => {
     'version',
     'userUpdated {username}',
     `location${mm.getProjection('location.Location.FlatProjection')}`,
+    // New top-level fields extracted from json_ext
+    'sexo',
+    'contactoTelefonico',
+    'vulgo',
+    'numDocId',
+    'distrito',
+    'subdistrito',
+    'localidade',
   ];
 
   if (withGroupIndividuals) {
