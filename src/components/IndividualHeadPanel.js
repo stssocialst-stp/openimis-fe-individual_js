@@ -89,6 +89,14 @@ class IndividualHeadPanel extends FormPanel {
           <Grid item xs={2} className={classes.item}>
             <TextInput
               module="individual"
+              label="individual.nib"
+              onChange={(v) => this.updateAttribute('nib', v)}
+              value={individual?.nib}
+            />
+          </Grid>
+          <Grid item xs={2} className={classes.item}>
+            <TextInput
+              module="individual"
               label="individual.sex"
               required
               onChange={(v) => this.updateAttribute('sex', v)}

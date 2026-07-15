@@ -109,6 +109,14 @@ function IndividualFilter({
         />
       </Grid>
       <Grid item xs={2} className={classes.item}>
+        <TextInput
+          module="individual"
+          label="individual.nib"
+          value={filterTextFieldValue("nib")}
+          onChange={onChangeStringFilter("nib", )}
+        />
+      </Grid>
+      <Grid item xs={2} className={classes.item}>
         <IndividualSexPicker
           withNull
           nullLabel={formatMessage(intl, "individual", "any")}

@@ -67,6 +67,7 @@ const INDIVIDUAL_FULL_PROJECTION = (mm, withGroupIndividuals = false) => {
     'contactoTelefonico',
     'vulgo',
     'numDocId',
+    'nib',
     'distrito',
     'subdistrito',
     'localidade',
@@ -324,6 +325,7 @@ function formatIndividualGQL(individual) {
     ${individual?.lastName ? `lastName: "${formatGQLString(individual.lastName)}"` : ''}
     ${individual?.jsonExt ? `jsonExt: ${JSON.stringify(individual.jsonExt)}` : ''}
     ${individual?.dob ? `dob: "${dateTimeToDate(individual.dob)}"` : ''}
+    ${individual?.nib ? `nib: "${individual.nib}"` : ''}
     ${individual?.location ? `locationId: ${decodeId(individual.location.id)}` : ''}
   `;
 }
