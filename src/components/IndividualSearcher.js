@@ -97,12 +97,14 @@ function IndividualSearcher({
     'first_name',
     'last_name',
     'dob',
+    'nib',
   ]);
   const exportFieldsColumns = {
     id: 'ID',
     first_name: formatMessage(intl, 'individual', 'export.firstName'),
     last_name: formatMessage(intl, 'individual', 'export.lastName'),
     dob: formatMessage(intl, 'individual', 'export.dob'),
+    nib: formatMessage(intl, 'individual', 'individual.nib'),
   };
   const prevSubmittingMutationRef = useRef();
 
